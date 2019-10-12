@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -10,12 +9,15 @@ import (
 
 func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error) {
 	if request.HTTPMethod != "POST" {
-		return nil, errors.New("Method not allowed")
+		return &events.APIGatewayProxyResponse{
+			StatusCode: http.StatusMethodNotAllowed,
+			Body:       "Hello,CREATE CARD",
+		}, nil
 	}
 
 	return &events.APIGatewayProxyResponse{
 		StatusCode: http.StatusOK,
-		Body:       "Hello,CREATE CARD",
+		Body:       "Hello, CREATE CARD",
 	}, nil
 }
 

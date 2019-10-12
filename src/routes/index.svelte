@@ -46,21 +46,21 @@
 <script>
 async function createCard(method = 'POST') {
   try {
-    const response = await fetch('/.netlify/functions/create_card', { method: method })
-    const data = await response.json()
-    console.log(data)
+    const response = await fetch('/.netlify/functions/create_card', { method: method });
+    const data = await response.text();
+    console.log(data);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
 async function deleteCard(method = 'DELETE') {
   try {
-    const response = await fetch('/.netlify/functions/delete_card', { method: method })
-    const data = await response.json()
-    console.log(data)
+    const response = await fetch('/.netlify/functions/delete_card', { method: method });
+    const data = await response.text();
+    console.log(data);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 </script>
