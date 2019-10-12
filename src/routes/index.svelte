@@ -44,9 +44,9 @@
 </svelte:head>
 
 <script>
-async function getAjax() {
+async function createCard(method = 'POST') {
   try {
-    const response = await fetch('/.netlify/functions/create_card', { method: 'GET' })
+    const response = await fetch('/.netlify/functions/create_card', { method: method })
     const data = await response.json()
     console.log(data)
   } catch (error) {
@@ -54,9 +54,9 @@ async function getAjax() {
   }
 }
 
-async function postAjax() {
+async function deleteCard(method = 'DELETE') {
   try {
-    const response = await fetch('/.netlify/functions/create_card', { method: 'POST' })
+    const response = await fetch('/.netlify/functions/delete_card', { method: method })
     const data = await response.json()
     console.log(data)
   } catch (error) {
@@ -69,8 +69,11 @@ async function postAjax() {
 
 <h2><u>Svelte + Sapper + Tailwindcss + PurgeCSS</u></h2>
 
-<button on:click="{ getAjax }">Get lambda function</button>
-<button on:click="{ postAjax }">Post lambda function</button>
+<button on:click="{ createCard }">Post lambda function</button>
+<button on:click="{ () => createCard('GET') }">Post lambda function with error</button><br>
+
+<button on:click="{ deleteCard }">Delete lambda function</button>
+<button on:click="{ () => deleteCard('GET') }">Delete lambda function with error</button><br>
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
