@@ -17,7 +17,7 @@ input NewCard {
 }
 
 input NewSpent {
-  card: NewCard!
+  cardId: Int!
   name: String!
   total: Float!
 }
