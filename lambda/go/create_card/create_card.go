@@ -15,7 +15,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	return &events.APIGatewayProxyResponse{
 		StatusCode: http.StatusOK,
-		Body:       "Hello, World",
+		Body:       "Hello,CREATE CARD",
 	}, nil
 }
 
