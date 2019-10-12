@@ -1,0 +1,33 @@
+type Card {
+  id: ID
+  number: Int!
+  brand: String!
+}
+
+type Spent {
+  id: ID
+  card: Card!
+  name: String!
+  total: Float!
+}
+
+input NewCard {
+  number: Int!
+  brand: String!
+}
+
+input NewSpent {
+  card: NewCard!
+  name: String!
+  total: Float!
+}
+
+type Mutation {
+  createCard(input: NewCard!): Card! @resolver(name: "create_card" paginated: true)
+  createSpent(input: NewSpent!): Spent! @resolver(name: "create_spent" paginated: true)
+}
+
+type Query {
+  cards: [Card!]!
+  spents: [Spent!]!
+}
