@@ -50,7 +50,7 @@ async function createCard(method = 'POST') {
     const data = await response.text();
     console.log(data);
   } catch (error) {
-    console.log(error);
+    console.log('Ocorreu um erro: ', error);
   }
 }
 
@@ -60,7 +60,7 @@ async function deleteCard(method = 'DELETE') {
     const data = await response.text();
     console.log(data);
   } catch (error) {
-    console.log(error);
+    console.log('Ocorreu um erro: ', error);
   }
 }
 </script>

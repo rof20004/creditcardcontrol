@@ -11,7 +11,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 	if request.HTTPMethod != "POST" {
 		return &events.APIGatewayProxyResponse{
 			StatusCode: http.StatusMethodNotAllowed,
-			Body:       "Hello,CREATE CARD",
+			Body:       "Método inválido",
 		}, nil
 	}
 
