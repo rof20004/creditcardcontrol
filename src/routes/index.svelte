@@ -43,9 +43,34 @@
 	<title>Sapper project template</title>
 </svelte:head>
 
+<script>
+async function getAjax() {
+  try {
+    const response = await fetch('/.netlify/functions/create_card', { method: 'GET' })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function postAjax() {
+  try {
+    const response = await fetch('/.netlify/functions/create_card', { method: 'POST' })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+</script>
+
 <h1>Great success!</h1>
 
 <h2><u>Svelte + Sapper + Tailwindcss + PurgeCSS</u></h2>
+
+<button on:click="{ getAjax }">Get lambda function</button>
+<button on:click="{ postAjax }">Post lambda function</button>
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
