@@ -69,10 +69,10 @@ async function deleteCard(method = 'DELETE') {
 
 <h2><u>Svelte + Sapper + Tailwindcss + PurgeCSS</u></h2>
 
-<button on:click="{ createCard }">Post lambda function</button>
+<button on:click="{ () => createCard('POST') }">Post lambda function</button>
 <button on:click="{ () => createCard('GET') }">Post lambda function with error</button><br>
 
-<button on:click="{ deleteCard }">Delete lambda function</button>
+<button on:click="{ () => deleteCard('DELETE') }">Delete lambda function</button>
 <button on:click="{ () => deleteCard('GET') }">Delete lambda function with error</button><br>
 
 <figure>
