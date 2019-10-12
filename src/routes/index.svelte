@@ -47,8 +47,12 @@
 async function createCard(method = 'POST') {
   try {
     const response = await fetch('/.netlify/functions/create_card', { method: method });
-    const data = await response.text();
-    console.log(data);
+    if (response.ok) {
+      const data = await response.text();
+      alert(data);
+    } else {
+      alert('Ocorreu um erro desconhecido');
+    }
   } catch (error) {
     console.log('Ocorreu um erro: ', error);
   }
@@ -57,8 +61,12 @@ async function createCard(method = 'POST') {
 async function deleteCard(method = 'DELETE') {
   try {
     const response = await fetch('/.netlify/functions/delete_card', { method: method });
-    const data = await response.text();
-    console.log(data);
+    if (response.ok) {
+      const data = await response.text();
+      alert(data);
+    } else {
+      alert('Ocorreu um erro desconhecido');
+    }
   } catch (error) {
     console.log('Ocorreu um erro: ', error);
   }
