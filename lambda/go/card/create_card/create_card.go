@@ -17,7 +17,7 @@ var faunaDB f.Value
 func init() {
 	client := f.NewFaunaClient(os.Getenv("FAUNADB_SERVER_SECRET"))
 
-	res, err := client.Query(f.Get(f.Ref("cards")))
+	res, err := client.Query(f.Get(f.Ref("collections/cards")))
 	if err != nil {
 		panic(err)
 	}
