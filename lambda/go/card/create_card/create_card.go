@@ -8,8 +8,8 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	f "gopkg.in/fauna/faunadb-go.v2/faunadb"
 	m "github.com/rof20004/creditcardcontrol/card"
+	f "gopkg.in/fauna/faunadb-go.v2/faunadb"
 )
 
 var faunaDB f.Value
@@ -17,7 +17,7 @@ var faunaDB f.Value
 func init() {
 	client := f.NewFaunaClient(os.Getenv("FAUNADB_SERVER_SECRET"))
 
-	res, err := client.Query(f.Get(f.Ref("classes/Card")))
+	res, err := client.Query(f.Get(f.Collection("Card")))
 	if err != nil {
 		panic(err)
 	}
