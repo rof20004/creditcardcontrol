@@ -1,7 +1,7 @@
 build:
-	export GO111MODULE="on"
 	mkdir -p functions
 	cd lambda/go && \
+	export GO111MODULE="on" && \
 	go get ./... && \
 	go build -o ../../functions/create_card card/create_card/create_card.go && \
 	go build -o ../../functions/delete_card card/delete_card/delete_card.go
