@@ -9,6 +9,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	f "gopkg.in/fauna/faunadb-go.v2/faunadb"
+	m "github.com/rof20004/creditcardcontrol/card"
 )
 
 var faunaDB f.Value
@@ -32,7 +33,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 		}, nil
 	}
 
-	var cards = make(map[string]interface{})
+	var cards []*m.Card
 
 	if err := faunaDB.At(f.ObjKey("data")).Get(cards); err != nil {
 		log.Println(err)
