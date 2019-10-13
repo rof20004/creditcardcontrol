@@ -16,7 +16,7 @@ var faunaDB f.Value
 func init() {
 	client := f.NewFaunaClient(os.Getenv("FAUNADB_SERVER_SECRET"))
 
-	res, err := client.Query(f.Get(f.Ref("collections/Card")))
+	res, err := client.Query(f.Get(f.Collection("Card")))
 	if err != nil {
 		panic(err)
 	}
@@ -34,7 +34,7 @@ func handler(request events.APIGatewayProxyRequest) (*events.APIGatewayProxyResp
 
 	var cards = make(map[string]interface{})
 
-	if err := faunaDB.At(f.ObjKey("data")).Get(&cards); err != nil {
+	if err := faunaDB.At(f.ObjKey("data")).Get(cards); err != nil {
 		log.Println(err)
 		return &events.APIGatewayProxyResponse{
 			StatusCode: http.StatusMethodNotAllowed,
