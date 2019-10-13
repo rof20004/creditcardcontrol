@@ -2,6 +2,7 @@ type Card {
   id: ID
   number: Int!
   brand: String!
+  spents: [Spent!] @relation
 }
 
 type Spent {
